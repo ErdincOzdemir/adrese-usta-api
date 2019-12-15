@@ -1,1 +1,13 @@
-
+server:
+  port: 8081
+spring:
+  application:
+    name: adrese-usta-api
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/adreseusta
+    username: adreseusta
+    password: sifre123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
