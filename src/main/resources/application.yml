@@ -4,10 +4,12 @@ spring:
   application:
     name: adrese-usta-api
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/adreseusta
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/adreseusta?useUnicode=yes&characterEncoding=UTF-8
     username: adreseusta
     password: sifre123
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: none
+jwt:
+  secret: adreseusta

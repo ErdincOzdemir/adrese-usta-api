@@ -1,4 +1,4 @@
-package com.adreseusta.api.user.persistence;
+package com.adreseusta.api.user.persistence.entity;
 
 import com.adreseusta.api.common.persistence.BaseEntity;
 import lombok.Getter;
@@ -12,15 +12,12 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.adreseusta.api.common.persistence.BaseEntity.*;
-
 @Getter
 @Setter
 @Entity
 @Audited
 @Where(clause = "is_deleted = false")
 @Table(name = "user")
-@SequenceGenerator(name = DEFAULT_GEN, sequenceName = "SEQ_USER", allocationSize = 1)
 public class User extends BaseEntity {
 
     @Column(name = "first_name", length = 50)

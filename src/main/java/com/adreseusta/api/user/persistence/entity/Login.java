@@ -1,4 +1,4 @@
-package com.adreseusta.api.user.persistence;
+package com.adreseusta.api.user.persistence.entity;
 
 import com.adreseusta.api.common.persistence.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -13,15 +13,12 @@ import javax.persistence.*;
 
 import java.time.LocalDateTime;
 
-import static com.adreseusta.api.common.persistence.BaseEntity.DEFAULT_GEN;
-
 @Getter
 @Setter
 @Entity
 @Audited
 @Where(clause = "is_deleted = false")
 @Table(name = "login")
-@SequenceGenerator(name = DEFAULT_GEN, sequenceName = "SEQ_LOGIN", allocationSize = 1)
 @AllArgsConstructor
 @NoArgsConstructor
 public class Login extends BaseEntity {

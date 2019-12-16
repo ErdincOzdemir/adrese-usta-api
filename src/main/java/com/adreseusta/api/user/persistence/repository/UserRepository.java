@@ -1,6 +1,6 @@
 package com.adreseusta.api.user.persistence.repository;
 
-import com.adreseusta.api.user.persistence.User;
+import com.adreseusta.api.user.persistence.entity.User;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.jpa.repository.JpaRepository;
 

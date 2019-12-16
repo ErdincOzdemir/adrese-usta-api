@@ -19,4 +19,7 @@ public class LoginResponse extends BaseResponse {
 
     @ApiModelProperty(name = "phoneNumber", notes = "phone number of user")
     private String phoneNumber;
+
+    @ApiModelProperty(name = "token", notes = "jwt token of user")
+    private String token;
 }

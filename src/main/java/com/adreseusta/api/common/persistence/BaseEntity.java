@@ -14,11 +14,9 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 
-    public static final String DEFAULT_GEN = "default_gen";
-
     @Id
     @Column(length = 16)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = DEFAULT_GEN)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Version

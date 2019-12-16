@@ -41,7 +41,7 @@ public class MicroExceptionHandler extends ResponseEntityExceptionHandler {
     private final Logger log = LoggerFactory.getLogger(MicroExceptionHandler.class);
     private MessageSource messageSource;
     private static final String TRACE_ID_KEY = "X-B3-TraceId";
-    private static final String GENERIC_ERROR_MESSAGE_KEY = "com.ykb.generic.error";
+    private static final String GENERIC_ERROR_MESSAGE_KEY = "generic.error";
 
     @Value("${spring.application.name}")
     public String applicationName;

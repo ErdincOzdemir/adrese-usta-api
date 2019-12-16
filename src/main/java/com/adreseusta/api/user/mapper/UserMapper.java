@@ -4,7 +4,7 @@ import com.adreseusta.api.user.api.request.LoginRequest;
 import com.adreseusta.api.user.api.request.RegisterRequest;
 import com.adreseusta.api.user.api.response.LoginResponse;
 import com.adreseusta.api.user.api.response.RegisterResponse;
-import com.adreseusta.api.user.persistence.User;
+import com.adreseusta.api.user.persistence.entity.User;
 import com.adreseusta.api.user.service.dto.LoginDTO;
 import com.adreseusta.api.user.service.dto.UserDTO;
 import org.mapstruct.Mapper;

@@ -1,9 +1,11 @@
 package com.adreseusta.api.user.service.impl;
 
+import com.adreseusta.api.common.service.impl.BaseServiceImpl;
+import com.adreseusta.api.config.JwtTokenUtil;
 import com.adreseusta.api.user.exception.WrongUsernameOrPasswordException;
 import com.adreseusta.api.user.mapper.UserMapper;
-import com.adreseusta.api.user.persistence.Login;
-import com.adreseusta.api.user.persistence.User;
+import com.adreseusta.api.user.persistence.entity.Login;
+import com.adreseusta.api.user.persistence.entity.User;
 import com.adreseusta.api.user.persistence.repository.LoginRepository;
 import com.adreseusta.api.user.persistence.repository.UserRepository;
 import com.adreseusta.api.user.service.UserService;
@@ -17,16 +19,18 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private LoginRepository loginRepository;
     private UserMapper userMapper;
+    private JwtTokenUtil jwtTokenUtil;
 
-    public UserServiceImpl(UserRepository userRepository, LoginRepository loginRepository, UserMapper userMapper) {
+    public UserServiceImpl(UserRepository userRepository, LoginRepository loginRepository, UserMapper userMapper, JwtTokenUtil jwtTokenUtil) {
         this.userRepository = userRepository;
         this.loginRepository = loginRepository;
         this.userMapper = userMapper;
+        this.jwtTokenUtil = jwtTokenUtil;
     }
 
     @Override
@@ -42,14 +46,16 @@ public class UserServiceImpl implements UserService {
 
         if (userQuery.isPresent()) {
             User user = userQuery.get();
-            //TODO: change ip
-            Login login = new Login(user, LocalDateTime.now(), "10.10.10.10");
+            String clientIpAddress = getClientIpAddress();
+            Login login = new Login(user, LocalDateTime.now(), clientIpAddress);
             loginRepository.save(login);
 
-            return userMapper.toUserDTO(user);
+            UserDTO userDTO = userMapper.toUserDTO(user);
+            userDTO.setToken(jwtTokenUtil.generateToken(loginDTO));
+
+            return userDTO;
         }
 
         throw new WrongUsernameOrPasswordException();
     }
-
 }
