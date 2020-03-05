@@ -17,6 +17,5 @@ public class LoginRequest extends BaseRequest {
 
     @NotNull
     @ApiModelProperty(name = "password", notes = "password", required = true)
-    @Length(min = 8, max = 16)
     private String password;
 }

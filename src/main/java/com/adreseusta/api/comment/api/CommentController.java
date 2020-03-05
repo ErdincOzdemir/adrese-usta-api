@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @Api(value = "comment controller")
 @RequestMapping("/comment")
+@CrossOrigin
 public class CommentController {
 
     private CommentService commentService;

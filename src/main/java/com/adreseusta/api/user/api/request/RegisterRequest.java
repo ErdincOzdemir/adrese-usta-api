@@ -30,9 +30,4 @@ public class RegisterRequest extends BaseRequest {
     @ApiModelProperty(name = "password", notes = "password", required = true)
     @Length(min = 8, max = 16)
     private String password;
-
-    @NotNull
-    @ApiModelProperty(name = "passwordAgain", notes = "password again", required = true)
-    @Length(min = 8, max = 16)
-    private String passwordAgain;
 }
